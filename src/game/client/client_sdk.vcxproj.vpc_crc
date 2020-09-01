@@ -1,7 +1,7 @@
 [vpc crc file version 2]
-b9c20ec3 C:\Program Files (x86)\Steam\steamapps\sourcemods\src\devtools\bin\vpc.exe
-_Nc_VS2013/vpcgame:valve_
-e87c82fd client_scratch.vpc
+b58cd6fb E:\project-c\src\devtools\bin\vpc.exe
+_Nc_VS2013/vpcgame:sdk_
+eb9b5ccb client_scratch.vpc
 b15c231b ..\..\game\client\client_base.vpc
 4832e67a ..\..\vpc_scripts\source_dll_base.vpc
 d752cf80 ..\..\vpc_scripts\platform_dirs.vpc

@@ -85,9 +85,6 @@
     <Filter Include="VPC Scripts">
       <UniqueIdentifier>{A40EE377-781A-C6B9-0C7C-B3BE118D248E}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\HL2 DLL">
-      <UniqueIdentifier>{bd71d085-7cfa-4eab-b4b9-4be612bca854}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\lib\public\bitmap.lib">
@@ -3133,7 +3130,13 @@
     <ClCompile Include="..\..\game\shared\sdk\weapon_galil.cpp">
       <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\shared\sdk\weapon_k98.cpp">
+      <Filter>Source Files\HLDX Weapons</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\game\shared\sdk\weapon_m4a1.cpp">
+      <Filter>Source Files\HLDX Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\sdk\weapon_mp44.cpp">
       <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\shared\sdk\weapon_sawnoff.cpp">
@@ -3507,15 +3510,6 @@
     </ClCompile>
     <ClCompile Include="toolframework_client.cpp">
       <Filter>Tool Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="hl2\hud_quickinfo.cpp">
-      <Filter>Source Files\HL2 DLL</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_k98.cpp">
-      <Filter>Source Files\HLDX Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_mp44.cpp">
-      <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

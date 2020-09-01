@@ -2788,7 +2788,13 @@
     <ClCompile Include="..\..\game\shared\sdk\weapon_galil.cpp">
       <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\game\shared\sdk\weapon_k98.cpp">
+      <Filter>Source Files\HLDX Weapons</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\game\shared\sdk\weapon_m4a1.cpp">
+      <Filter>Source Files\HLDX Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\game\shared\sdk\weapon_mp44.cpp">
       <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
     <ClCompile Include="..\..\game\shared\sdk\weapon_sawnoff.cpp">
@@ -3105,12 +3111,6 @@
     </ClCompile>
     <ClCompile Include="toolframework_server.cpp">
       <Filter>Tools Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_k98.cpp">
-      <Filter>Source Files\HLDX Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\shared\sdk\weapon_mp44.cpp">
-      <Filter>Source Files\HLDX Weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

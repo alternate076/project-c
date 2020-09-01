@@ -1,6 +1,6 @@
 [vpc crc file version 2]
-b9c20ec3 C:\Program Files (x86)\Steam\steamapps\sourcemods\src\devtools\bin\vpc.exe
-_Nc_VS2013/vpcgame:valve_
+b58cd6fb E:\project-c\src\devtools\bin\vpc.exe
+_Nc_VS2013/vpcgame:sdk_
 66083bbd game_shader_dx9_scratch.vpc
 02e22d45 ..\..\materialsystem\stdshaders\game_shader_dx9_base.vpc
 4832e67a ..\..\vpc_scripts\source_dll_base.vpc
