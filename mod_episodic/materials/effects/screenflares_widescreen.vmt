@@ -1,0 +1,6 @@
+"editor_shader"
+{
+"$shadername" "postproc_flare_cinematic"
+"$basetexture" "shaders/effects/lens_flare"
+"$bloom" "_rt_smallFB0"
+}

@@ -1,0 +1,5 @@
+"editor_shader"
+{
+"$shadername" "postproc_vignette"
+"$basetexture" "_rt_smallFB0"
+}

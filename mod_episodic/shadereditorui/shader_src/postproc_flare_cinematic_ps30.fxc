@@ -1,0 +1,88 @@
+// ********************************
+// ** auto generated pixelshader **
+// ********************************
+
+#define SHADER_EDITOR_2013_COMPILE
+
+
+// Includes
+#include "common_ps_fxc.h"
+#include "common_vertexlitgeneric_dx9.h"
+#include "common_lightmappedgeneric_fxc.h"
+#include "common_flashlight_fxc.h"
+#include "common_parallax.h"
+
+
+// Samplers
+sampler _Sampler_00		: register( s0 );
+sampler _Sampler_01		: register( s1 );
+sampler _Sampler_02		: register( s2 );
+
+// Constants
+const float2 _g_TexelSize		: register( c16 );
+
+// Arrays
+static const float g_cArray_440[7][7] =
+{
+	float( 0.000575f ),float( 0.002346f ),float( 0.005455f ),float( 0.007226f ),float( 0.005455f ),float( 0.002346f ),float( 0.000575f ),
+	float( 0.002346f ),float( 0.009573f ),float( 0.022258f ),float( 0.029488f ),float( 0.022258f ),float( 0.009573f ),float( 0.002346f ),
+	float( 0.005455f ),float( 0.022258f ),float( 0.051752f ),float( 0.068561f ),float( 0.051752f ),float( 0.022258f ),float( 0.005455f ),
+	float( 0.007226f ),float( 0.029488f ),float( 0.068561f ),float( 0.090828f ),float( 0.068561f ),float( 0.029488f ),float( 0.007226f ),
+	float( 0.005455f ),float( 0.022258f ),float( 0.051752f ),float( 0.068561f ),float( 0.051752f ),float( 0.022258f ),float( 0.005455f ),
+	float( 0.002346f ),float( 0.009573f ),float( 0.022258f ),float( 0.029488f ),float( 0.022258f ),float( 0.009573f ),float( 0.002346f ),
+	float( 0.000575f ),float( 0.002346f ),float( 0.005455f ),float( 0.007226f ),float( 0.005455f ),float( 0.002346f ),float( 0.000575f ),
+};
+
+// Semantic structures
+struct PS_INPUT
+{
+	float2 vTexCoord_0			:	TEXCOORD0;
+};
+
+struct PS_OUTPUT
+{
+	float4 vColor_0				:	COLOR0;
+};
+
+// Entry point
+PS_OUTPUT main( const PS_INPUT In )
+{
+	PS_OUTPUT Out;
+	float4 _var0 = tex2D( _Sampler_00, In.vTexCoord_0 ).rgba;
+	float4 _var1 = tex2D( _Sampler_01, In.vTexCoord_0 ).rgba;
+	float4 _var2 = float4( 0.000000, 0.000000, 0.000000, 0.000000 );
+	float2 _var3 = In.vTexCoord_0 - float( 0.500000 );
+	float2 _var4 = _g_TexelSize * float( 13.000000 );
+	float _var5 = length( _var3 );
+	float2 _var6 = _var4 * float( -4.000000 );
+	float2 _var7 = float2( 0.000000, _var4.y );
+	float2 _var8 = float2( _var4.x, 0.000000 );
+	_var5 = smoothstep( float( 0.400000 ), float( 1.000000 ), _var5 );
+	float2 _var9 = In.vTexCoord_0 + _var5;
+	float2 _var10 = 1.0f - _var9;
+	float2 _var11 = 1.0f - _var9;
+	for ( int _var12 = 0; _var12 < 7; _var12++ )
+	{
+		_var6 = _var6 + _var7;
+		float2 _var13 = _var6;
+		for ( int _var14 = 0; _var14 < 7; _var14++ )
+		{
+			float2 _var15 = _var10;
+			_var13 = _var13 + _var8;
+			float2 _var16 = _var11;
+			_var15 = _var15 + _var13;
+			_var16 = _var16 + _var13;
+			float4 _var17 = tex2D( _Sampler_02, _var15 ).rgba;
+			float4 _var18 = tex2D( _Sampler_02, _var16 ).rgba;
+			_var17 = _var17 * g_cArray_440[_var14][_var12];
+			_var18 = _var18 * g_cArray_440[_var14][_var12];
+			_var17 = _var17 + _var18;
+			_var2 = _var2 + _var17;
+		}
+	}
+	_var2 = _var2 * float( 1.000000 );
+	_var1 = lerp( float( 0.000000 ), _var1, _var2 );
+	_var0 = _var0 + _var1;
+	Out.vColor_0 = _var0;
+	return Out;
+}

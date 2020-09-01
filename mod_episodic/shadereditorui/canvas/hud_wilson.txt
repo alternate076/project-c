@@ -1,0 +1,181 @@
+"canvas"
+{
+	"cfmt_version"		"canvasver#003"
+	"flowgraph_type"		"1"
+	"config"
+	{
+		"shadermodel"		"1"
+		"cull_mode"		"0"
+		"alpha_blending"		"4"
+		"depth_test"		"0"
+		"depth_write"		"0"
+		"srgb_write"		"0"
+	}
+	"Nodes"
+	{
+		"Node_000"
+		{
+			"iType"		"1"
+			"pos_x"		"-320.000000"
+			"pos_y"		"190.000000"
+			"size_x"		"55.000000"
+			"size_y"		"-28.000000"
+			"iPreview"		"0"
+			"enable_flex"		"0"
+			"enable_normal"		"0"
+			"enable_normal_compression"		"0"
+			"enable_blendweights"		"0"
+			"enable_tangentspace"		"0"
+			"enable_tangentspace_skinning"		"0"
+			"numTexcoords"		"1"
+			"numColor"		"0"
+			"dTFlag_Texcoords_0"		"2"
+			"dTFlag_Texcoords_1"		"2"
+			"dTFlag_Texcoords_2"		"2"
+			"dTFlag_Color_0"		"8"
+			"dTFlag_Color_1"		"8"
+		}
+		"Node_001"
+		{
+			"iType"		"2"
+			"pos_x"		"265.000000"
+			"pos_y"		"190.000000"
+			"size_x"		"55.000000"
+			"size_y"		"-28.000000"
+			"iPreview"		"0"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"4"
+					"iTarget_jack"		"0"
+				}
+				"jackIn_01"
+				{
+					"iTarget_node"		"0"
+					"iTarget_jack"		"1"
+				}
+			}
+			"numTexcoords"		"1"
+			"numColor"		"0"
+			"numTexcoord_Flag_0"		"2"
+			"numTexcoord_Flag_1"		"2"
+			"numTexcoord_Flag_2"		"2"
+			"numTexcoord_Flag_3"		"2"
+			"numTexcoord_Flag_4"		"2"
+			"numTexcoord_Flag_5"		"2"
+			"numTexcoord_Flag_6"		"2"
+			"numTexcoord_Flag_7"		"2"
+			"numColor_Flag_0"		"8"
+			"numColor_Flag_1"		"8"
+		}
+		"Node_002"
+		{
+			"iType"		"3"
+			"pos_x"		"-320.000000"
+			"pos_y"		"-130.000000"
+			"size_x"		"55.000000"
+			"size_y"		"-17.000000"
+			"iPreview"		"0"
+			"numTexcoords"		"1"
+			"numColor"		"0"
+			"numTexcoord_Flag_0"		"2"
+			"numTexcoord_Flag_1"		"2"
+			"numTexcoord_Flag_2"		"2"
+			"numTexcoord_Flag_3"		"2"
+			"numTexcoord_Flag_4"		"2"
+			"numTexcoord_Flag_5"		"2"
+			"numTexcoord_Flag_6"		"2"
+			"numTexcoord_Flag_7"		"2"
+			"numColor_Flag_0"		"8"
+			"numColor_Flag_1"		"8"
+		}
+		"Node_003"
+		{
+			"iType"		"4"
+			"pos_x"		"265.000000"
+			"pos_y"		"-130.000000"
+			"size_x"		"55.000000"
+			"size_y"		"-17.000000"
+			"iPreview"		"0"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"6"
+					"iTarget_jack"		"0"
+				}
+			}
+			"numColors"		"1"
+			"enable_Depth"		"0"
+		}
+		"Node_004"
+		{
+			"iType"		"27"
+			"pos_x"		"-44.526688"
+			"pos_y"		"206.208878"
+			"size_x"		"80.000000"
+			"size_y"		"-17.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"0"
+					"iTarget_jack"		"0"
+				}
+			}
+			"swizzleString"		"x y z 1"
+		}
+		"Node_005"
+		{
+			"iType"		"94"
+			"pos_x"		"-161.323151"
+			"pos_y"		"-194.618378"
+			"size_x"		"84.000000"
+			"size_y"		"-50.000000"
+			"iPreview"		"1"
+			"iTextureType"		"1"
+			"IsCubemap"		"0"
+			"szDemoTexturePath"		"texture_samples\ice_0"
+			"szFallbackTexturePath"		"white"
+			"iFallbackMode"		"0"
+		}
+		"Node_006"
+		{
+			"iType"		"99"
+			"pos_x"		"-13.597240"
+			"pos_y"		"-129.098511"
+			"size_x"		"156.000000"
+			"size_y"		"-80.000000"
+			"iPreview"		"1"
+			"bridges"
+			{
+				"jackIn_00"
+				{
+					"iTarget_node"		"2"
+					"iTarget_jack"		"0"
+				}
+				"jackIn_01"
+				{
+					"iTarget_node"		"5"
+					"iTarget_jack"		"0"
+				}
+			}
+			"varName_In_0"		"texCoord"
+			"varType_In_0"		"2"
+			"varName_In_1"		"frameSampler"
+			"varType_In_1"		"128"
+			"varName_Out_0"		"final"
+			"varType_Out_0"		"8"
+			"szFunctionName"		"PixelShaderFunction"
+			"iInline"		"1"
+			"szcode_global_num_strings"		"2"
+			"szcode_global_partial_00"		"float2 RadialDistortion(float2 coord, float2 pos)\r\n{\r\n	float distortion = -0.34; // -0.25\r\n\r\n	float2 cc = pos - 0.5;\r\n	float dist = dot(cc, cc) * distortion;\r\n	return coord * (pos + cc * (dist + 1) * dist) / pos;\r\n	//return coord * (pos + cc * (dist + 1) * dist) / pos;\r\n}\r\n\r\nfloat4 scanlinePixel(float2 texCoord, sampler frameSampler)\r\n{\r\n	float4 final = tex2D(frameSampler, texCoord);\r\n\r\n	if(floor(texCoord.y * 750) % 2 == 0) // 750 => Epaisseur trait\r\n		final = final*0.75;\r\n\r\n	return final;\r\n}\r\n\r\nfloat4 vGlowPixel(float2 texCoord, sampler frameSampler)\r\n{\r\n	float4 final = scanlinePixel(texCoord, frameSampler)*16;\r\n	//final += scanlinePixel(texCoord - float2(0, 0.004), frameSampler);\r\n	final += scanlinePixel(texCoord - float2(0, 0.003), frameSampler);\r\n	final += scanlinePixel(texCoord - float2(0, 0.002), frameSampler);\r\n	final += scanlinePixel(texCoord - float2(0, 0.001), frameSampler);\r\n	final += scanlinePixel(texCoord + float2(0, 0.001), frameSampler);\r\"
+			"szcode_global_partial_01"		"n	final += scanlinePixel(texCoord + float2(0, 0.002), frameSampler);\r\n	final += scanlinePixel(texCoord + float2(0, 0.003), frameSampler);\r\n	//final += scanlinePixel(texCoord + float2(0, 0.004), frameSampler);\r\n\r\n	return final/24;\r\n}\r\n\r\nfloat4 glowPixel(float2 texCoord, sampler frameSampler)\r\n{\r\n	float4 final = vGlowPixel(texCoord, frameSampler)*16;\r\n	//final += vGlowPixel(texCoord - float2(0.004, 0), frameSampler);\r\n	final += vGlowPixel(texCoord - float2(0.003, 0), frameSampler);\r\n	final += vGlowPixel(texCoord - float2(0.002, 0), frameSampler);\r\n	final += vGlowPixel(texCoord - float2(0.001, 0), frameSampler);\r\n	final += vGlowPixel(texCoord + float2(0.001, 0), frameSampler);\r\n	final += vGlowPixel(texCoord + float2(0.002, 0), frameSampler);\r\n	final += vGlowPixel(texCoord + float2(0.003, 0), frameSampler);\r\n	//final += vGlowPixel(texCoord + float2(0.004, 0), frameSampler);\r\n\r\n	return final/24;\r\n}\n"
+			"szcode_body_num_strings"		"1"
+			"szcode_body_partial_00"		"	texCoord = (texCoord - 0.5)*1.1 + 0.5;\r\n	texCoord = RadialDistortion(texCoord, texCoord);\r\n	if(texCoord.x < 0 || texCoord.x > 1)\r\n		final = float4(0, 0, 0, 0);\r\n	else if(texCoord.y < 0 || texCoord.y > 1)\r\n		final = float4(0, 0, 0, 0);\r\n	else\r\n		final = glowPixel(texCoord, frameSampler);"
+			"iEnvFlags"		"0"
+		}
+	}
+}

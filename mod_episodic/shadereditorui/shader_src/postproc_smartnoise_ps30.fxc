@@ -1,0 +1,69 @@
+// ********************************
+// ** auto generated pixelshader **
+// ********************************
+
+#define SHADER_EDITOR_2013_COMPILE
+
+
+// Includes
+#include "common_ps_fxc.h"
+#include "common_vertexlitgeneric_dx9.h"
+#include "common_lightmappedgeneric_fxc.h"
+#include "common_flashlight_fxc.h"
+#include "common_parallax.h"
+
+
+// Samplers
+sampler _Sampler_00		: register( s0 );
+sampler _Sampler_01		: register( s1 );
+
+// Constants
+const float4 g_cData_Random478		: register( c16 ); 		// Random gen
+const float4 g_cData_Random477		: register( c17 ); 		// Random gen
+const float4 g_cData_Random473		: register( c18 ); 		// Random gen
+const float4 g_cData_Random474		: register( c19 ); 		// Random gen
+
+// Semantic structures
+struct PS_INPUT
+{
+	float2 vTexCoord_0			:	TEXCOORD0;
+};
+
+struct PS_OUTPUT
+{
+	float4 vColor_0				:	COLOR0;
+};
+
+// Entry point
+PS_OUTPUT main( const PS_INPUT In )
+{
+	PS_OUTPUT Out;
+	float2 _var0 = float2( 32.000000, 32.000000 ) * In.vTexCoord_0;
+	float _var1 = g_cData_Random478.x;
+	float _var2 = g_cData_Random477.x;
+	float4 _texLookup_13 = tex2D( _Sampler_00, In.vTexCoord_0 );
+	float3 _var3 = _texLookup_13.rgb;
+	float _var4 = _texLookup_13.a;
+	float2 _var5 = float2( 32.000000, 32.000000 ) * In.vTexCoord_0;
+	float _var6 = g_cData_Random473.x;
+	float _var7 = g_cData_Random474.x;
+	float2 _var8 = float2( _var1, _var2 );
+	float2 _var9 = float2( _var6, _var7 );
+	float _var10 = dot( _var3, float3( 0.330000, 0.590000, 0.110000 ) );
+	_var0 = _var0 + _var8;
+	_var5 = _var5 + _var9;
+	_var10 = _var10 * float( 10.000000 );
+	float _var11 = tex2D( _Sampler_01, _var0 ).r;
+	float _var12 = tex2D( _Sampler_01, _var5 ).g;
+	_var10 = saturate( _var10 );
+	_var11 = _var11 * float( 0.100000 );
+	_var12 = _var12 * float( 0.100000 );
+	float3 _var13 = _var11 + _var3;
+	float3 _var14 = _var12 + _var3;
+	_var13 = _var13 + _var14;
+	_var13 = _var13 / float( 2.000000 );
+	_var13 = lerp( _var13, _var3, _var10 );
+	float4 _var15 = float4( _var13, _var4 );
+	Out.vColor_0 = _var15;
+	return Out;
+}

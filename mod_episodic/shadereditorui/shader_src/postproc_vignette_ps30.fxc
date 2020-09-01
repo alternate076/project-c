@@ -1,0 +1,45 @@
+// ********************************
+// ** auto generated pixelshader **
+// ********************************
+
+#define SHADER_EDITOR_2013_COMPILE
+
+
+// Includes
+#include "common_ps_fxc.h"
+#include "common_vertexlitgeneric_dx9.h"
+#include "common_lightmappedgeneric_fxc.h"
+#include "common_flashlight_fxc.h"
+#include "common_parallax.h"
+
+
+// Samplers
+sampler _Sampler_00		: register( s0 );
+
+// Semantic structures
+struct PS_INPUT
+{
+	float2 vTexCoord_0			:	TEXCOORD0;
+};
+
+struct PS_OUTPUT
+{
+	float4 vColor_0				:	COLOR0;
+};
+
+// Entry point
+PS_OUTPUT main( const PS_INPUT In )
+{
+	PS_OUTPUT Out;
+	float4 _texLookup_5 = tex2D( _Sampler_00, In.vTexCoord_0 );
+	float3 _var0 = _texLookup_5.rgb;
+	float _var1 = _texLookup_5.a;
+	float2 _var2 = In.vTexCoord_0 - float( 0.500000 );
+	float _var3 = length( _var2 );
+	_var3 = pow( _var3, float( 4.000000 ) );
+	_var3 = _var3 * float( 3.000000 );
+	_var0 = lerp( _var0, float( 0.000000 ), _var3 );
+	float4 _var4 = float4( _var0, _var1 );
+	Out.vColor_0 = _var4;
+	return Out;
+}

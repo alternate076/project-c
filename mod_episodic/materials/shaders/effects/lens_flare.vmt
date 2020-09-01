@@ -1,0 +1,6 @@
+"EDITOR_SHADER"
+{
+	"$SHADERNAME" "lens_flare"
+	"$basetexture" "shaders/effects/lens_flare"
+	"$bloom" "_rt_SmallFB0"
+}

@@ -1,0 +1,102 @@
+// ********************************
+// ** auto generated pixelshader **
+// ********************************
+
+#define SHADER_EDITOR_2013_COMPILE
+
+
+// Includes
+#include "common_ps_fxc.h"
+#include "common_vertexlitgeneric_dx9.h"
+#include "common_lightmappedgeneric_fxc.h"
+#include "common_flashlight_fxc.h"
+#include "common_parallax.h"
+
+
+// Samplers
+sampler _Sampler_00		: register( s0 );
+
+// User code - globals
+float2 RadialDistortion(float2 coord, float2 pos)
+{
+	float distortion = -0.34; // -0.25
+
+	float2 cc = pos - 0.5;
+	float dist = dot(cc, cc) * distortion;
+	return coord * (pos + cc * (dist + 1) * dist) / pos;
+	//return coord * (pos + cc * (dist + 1) * dist) / pos;
+}
+
+float4 scanlinePixel(float2 texCoord, sampler frameSampler)
+{
+	float4 final = tex2D(frameSampler, texCoord);
+
+	if(floor(texCoord.y * 750) % 2 == 0) // 750 => Epaisseur trait
+		final = final*0.75;
+
+	return final;
+}
+
+float4 vGlowPixel(float2 texCoord, sampler frameSampler)
+{
+	float4 final = scanlinePixel(texCoord, frameSampler)*16;
+	//final += scanlinePixel(texCoord - float2(0, 0.004), frameSampler);
+	final += scanlinePixel(texCoord - float2(0, 0.003), frameSampler);
+	final += scanlinePixel(texCoord - float2(0, 0.002), frameSampler);
+	final += scanlinePixel(texCoord - float2(0, 0.001), frameSampler);
+	final += scanlinePixel(texCoord + float2(0, 0.001), frameSampler);
+	final += scanlinePixel(texCoord + float2(0, 0.002), frameSampler);
+	final += scanlinePixel(texCoord + float2(0, 0.003), frameSampler);
+	//final += scanlinePixel(texCoord + float2(0, 0.004), frameSampler);
+
+	return final/24;
+}
+
+float4 glowPixel(float2 texCoord, sampler frameSampler)
+{
+	float4 final = vGlowPixel(texCoord, frameSampler)*16;
+	//final += vGlowPixel(texCoord - float2(0.004, 0), frameSampler);
+	final += vGlowPixel(texCoord - float2(0.003, 0), frameSampler);
+	final += vGlowPixel(texCoord - float2(0.002, 0), frameSampler);
+	final += vGlowPixel(texCoord - float2(0.001, 0), frameSampler);
+	final += vGlowPixel(texCoord + float2(0.001, 0), frameSampler);
+	final += vGlowPixel(texCoord + float2(0.002, 0), frameSampler);
+	final += vGlowPixel(texCoord + float2(0.003, 0), frameSampler);
+	//final += vGlowPixel(texCoord + float2(0.004, 0), frameSampler);
+
+	return final/24;
+}
+
+// User code - function bodies
+void PixelShaderFunction( in float2 texCoord, in sampler frameSampler, out float4 final )
+{
+	texCoord = (texCoord - 0.5)*1.1 + 0.5;
+	texCoord = RadialDistortion(texCoord, texCoord);
+	if(texCoord.x < 0 || texCoord.x > 1)
+		final = float4(0, 0, 0, 0);
+	else if(texCoord.y < 0 || texCoord.y > 1)
+		final = float4(0, 0, 0, 0);
+	else
+		final = glowPixel(texCoord, frameSampler);
+}
+
+// Semantic structures
+struct PS_INPUT
+{
+	float2 vTexCoord_0			:	TEXCOORD0;
+};
+
+struct PS_OUTPUT
+{
+	float4 vColor_0				:	COLOR0;
+};
+
+// Entry point
+PS_OUTPUT main( const PS_INPUT In )
+{
+	PS_OUTPUT Out;
+	float4 _var0 = (float4)0;
+	PixelShaderFunction( In.vTexCoord_0, _Sampler_00, _var0 );
+	Out.vColor_0 = _var0;
+	return Out;
+}
