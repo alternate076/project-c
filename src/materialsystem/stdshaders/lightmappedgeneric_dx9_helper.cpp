@@ -34,7 +34,9 @@ ConVar mat_disable_lightwarp("mat_disable_lightwarp", "0");
 ConVar mat_disable_fancy_blending("mat_disable_fancy_blending", "0");
 //ConVar mat_fullbright("mat_fullbright", "0", FCVAR_CHEAT);
 extern ConVar r_flashlight_version2;
-static ConVar gstring_csm_blend_tweak("gstring_csm_blend_tweak", "1");
+
+//Really depends on the colour and brightness of light env. Kinda wierd but works i will leave this at 15
+static ConVar gstring_csm_blend_tweak("gstring_csm_blend_tweak", "15");
 
 class CLightmappedGeneric_DX9_Context : public CBasePerMaterialContextData
 {

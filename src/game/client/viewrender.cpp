@@ -2036,38 +2036,10 @@ void CViewRender::UpdateCascadedShadow(const CViewSetup& view)
 		float flUVOffsetX;
 		float flViewDepthBiasHack;
 	} shadowConfigs[] = {
-		{ 64.0f, 0.0f, 0.25f, 0.0f },
-		{ 384.0f, 256.0f, 0.75f, 0.0f }
+		{ 180.0f, 0.0f, 0.25f, 0.0f },
+		{ 512.0f, 256.0f, 0.75f, 0.0f }
 	};
 	const int iCascadedShadowCount = ARRAYSIZE(shadowConfigs);
-
-	/*switch ( mode )
-	{
-	case CASCADEDCONFIG_NORMAL:
-	{
-		ShadowConfig_t &closeShadow = shadowConfigs[0];
-		ShadowConfig_t &farShadow = shadowConfigs[1];
-		closeShadow.flOrthoSize = 256.0f;
-		closeShadow.flForwardOffset = 102.0f;
-		farShadow.flOrthoSize = 786.0f;
-		farShadow.flForwardOffset = 384.0f;
-
-		vecMainViewFwd.z = 0.0f;
-		vecMainViewFwd.NormalizeInPlace();
-	}
-	break;
-
-	case CASCADEDCONFIG_SPACE:
-	{
-		ShadowConfig_t &closeShadow = shadowConfigs[0];
-		ShadowConfig_t &farShadow = shadowConfigs[1];
-		closeShadow.flOrthoSize = 4.0f;
-		closeShadow.flForwardOffset = 2.0f;
-		closeShadow.flUVOffsetX = 0.25f;
-		farShadow.flViewDepthBiasHack = 1.5f;
-	}
-	break;
-	}*/
 
 	g_pCSMEnvLight->GetShadowMappingConstants(angCascadedAngles, vecLight, vecAmbient);
 
@@ -2076,21 +2048,9 @@ void CViewRender::UpdateCascadedShadow(const CViewSetup& view)
 	static VMatrix s_CSMSwapMatrix[2];
 	static int s_iCSMSwapIndex = 0;
 
-	//C_BasePlayer *pPlayer = C_BasePlayer::GetLocalPlayer();
-
-	//Vector vecCascadeOrigin( ( mode == CASCADEDCONFIG_SPACE ) ? view.origin :
-	//						 pPlayer ? pPlayer->GetRenderOrigin() : vec3_origin );
 	Vector vecCascadeOrigin = view.origin - (vecFwd * 1536);
 
-	// This can only be set once per frame, not per shadow view. Fuckers.
-	/*if ( mode == CASCADEDCONFIG_SPACE )
-	{
-		pRenderContext->SetShadowDepthBiasFactors( 1.0f, 0.000005f );
-	}
-	else*/
-	{
-		pRenderContext->SetShadowDepthBiasFactors(8.0f, 0.0005f);
-	}
+	pRenderContext->SetShadowDepthBiasFactors(8.0f, 0.0005f);
 
 	for (int i = 0; i < iCascadedShadowCount; i++)
 	{
